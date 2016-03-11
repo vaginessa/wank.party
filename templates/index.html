@@ -18,12 +18,12 @@ decision is made.</p>
     <div class="form-group">
         <label for="username">Username</label>
         <input id="username" name="username" class="form-control"
-            value="{% if username %}{{ username }}{% endif %}" />
+            value="{% if username %}{{ username }}{% endif %}" maxlength="128" />
     </div>
     <div class="form-group">
         <label for="email">Email Address</label>
         <input id="email" name="email" class="form-control"
-            value="{% if email %}{{ email }}{% endif %}" />
+            value="{% if email %}{{ email }}{% endif %}" maxlength="256" />
     </div>
     <div class="form-group">
         <label for="password">Password</label>
@@ -31,7 +31,7 @@ decision is made.</p>
     </div>
     <div class="form-group">
         <label for="comments">Comments</label>
-        <input id="comments" name="comments" class="form-control" />
+        <input id="comments" name="comments" class="form-control" maxlength="512" />
     </div>
     <div class="row">
         <div class="col-md-3">
