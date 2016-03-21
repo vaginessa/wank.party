@@ -27,7 +27,7 @@ def send_invite(user):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Your sr.ht account is approved"
-    message['From'] = "mailer@sr.ht"
+    message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
     smtp.quit()
@@ -44,7 +44,7 @@ def send_rejection(user):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Your sr.ht account has been rejected"
-    message['From'] = "mailer@sr.ht"
+    message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
     smtp.quit()
@@ -67,7 +67,7 @@ def send_reset(user):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Reset your sr.ht password"
-    message['From'] = "mailer@sr.ht"
+    message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
     smtp.quit()
