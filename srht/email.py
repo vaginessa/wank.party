@@ -24,12 +24,10 @@ def send_invite(user):
                 "domain": _cfg("domain"),
                 "protocol": _cfg("protocol")
             })))
-    message['X-MC-Important'] = "true"
-    message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Your sr.ht account is approved"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
-    smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
+    smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())
     smtp.quit()
 
 def send_rejection(user):
@@ -41,12 +39,10 @@ def send_rejection(user):
     smtp.login(_cfg("smtp-user"), _cfg("smtp-password"))
     with open("emails/reject") as f:
         message = MIMEText(f.read())
-    message['X-MC-Important'] = "true"
-    message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Your sr.ht account has been rejected"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
-    smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
+    smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())
     smtp.quit()
 
 def send_reset(user):
@@ -64,10 +60,8 @@ def send_reset(user):
                 "protocol": _cfg("protocol"),
                 'confirmation': user.passwordReset
             })))
-    message['X-MC-Important'] = "true"
-    message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Reset your sr.ht password"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
-    smtp.sendmail("mailer@sr.ht", [ user.email ], message.as_string())
+    smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())
     smtp.quit()
