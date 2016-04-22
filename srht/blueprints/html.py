@@ -197,7 +197,7 @@ def reset_password(username, confirmation):
 @html.route("/uploads")
 @loginrequired
 def uploads():
-    return render_template("uploads.html", uploads=current_user.upload.filter_by(hidden=False))
+    return render_template("uploads.html", uploads=Upload.query.filter(Upload.user_id == current_user.id, Upload.hidden==False).order_by(Upload.created.desc()))
 @html.route("/disown", methods=['GET'])
 @loginrequired
 def disown():
