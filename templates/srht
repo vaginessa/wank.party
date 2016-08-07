@@ -10,7 +10,7 @@ source ~/.config/srht
 
 # This function sets $file to a selection scrot
 selection() {
-	uploadme="/tmp/scrot.png"
+	uploadme="/tmp/scrot.""$screenshot_extension"
 
 	maim --hidecursor -s -b 3 -c 250,250,250 "$uploadme" 2> "/dev/null"
 	if [[ "$?" -ge 1 ]]; then
@@ -54,7 +54,7 @@ file() {
 
 # This function sets $file to a full screen scrot
 desktop() {
-	uploadme="/tmp/scrot.png"
+	uploadme="/tmp/scrot.""$screenshot_extension"
 
 	if [ -n "$SWAYSOCK" ]; then
 		swaygrab "$uploadme"
