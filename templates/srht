@@ -56,7 +56,11 @@ file() {
 desktop() {
 	uploadme="/tmp/scrot.png"
 
-	maim --hidecursor "$uploadme"
+	if [ -n "$SWAYSOCK" ]; then
+		swaygrab "$uploadme"
+	else
+		maim --hidecursor "$uploadme"
+	fi
 
 	word=desktop
 }
