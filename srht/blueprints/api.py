@@ -150,4 +150,9 @@ def tox():
         "success": True
     }
 
-extension = lambda f: f.rsplit('.', 1)[-1].lower()
+def extension(f):
+    parts = f.rsplit('.', 2)
+    # special case for .tar.* files
+    if len(parts) > 2 and parts[-2].lower() == 'tar':
+        return 'tar.' + parts[-1].lower()
+    return parts[-1].lower()
