@@ -12,6 +12,8 @@ nav {
     position: fixed;
     bottom: 0;
     right: 20px;
+    max-width: 100px;
+    transform: scaleX(-1);
 }
 
 .container {
