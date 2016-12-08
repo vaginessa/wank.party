@@ -71,6 +71,8 @@ if not app.debug:
 def handle_404(e):
     return render_template("not_found.html"), 404
 
+moe = os.listdir('_static/moe/')
+
 @app.context_processor
 def inject():
     return {
@@ -85,6 +87,7 @@ def inject():
         'file_link': file_link,
         'disown_link': disown_link,
         'user': current_user,
+        'moe': random.choice(moe),
         'random': random,
         'owner': _cfg("owner"),
         'owner_email': _cfg("owner_email"),
