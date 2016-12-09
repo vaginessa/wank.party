@@ -25,6 +25,7 @@ nav {
 
 .container {
     width: 600px;
+    max-width: 100%;
     position: relative;
     z-index: 1;
 }
@@ -81,5 +82,15 @@ nav {
 
     img {
         display: inline !important;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .moe {
+        display: none;
+    }
+
+    nav {
+        position: static;
     }
 }

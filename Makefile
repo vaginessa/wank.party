@@ -24,7 +24,7 @@ static/%.css: styles/%.css
 
 static/%.css: styles/%.scss
 	@mkdir -p static/
-	scss -I styles/ $< $@
+	scss -I styles/ $< $@ --style compressed
 
 static/%.js: scripts/%.js
 	@mkdir -p static/
