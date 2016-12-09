@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# srht - Upload files/scrots/urls to sr.ht (rip pomf & uguu)
+# srht - Upload files/scrots/urls to wank.party (rip pomf & uguu)
 # By onodera, modified by SirCmpwn
 
 ## CONFIGURATION
@@ -67,7 +67,7 @@ desktop() {
 
 # This function uploads the $file
 upload() {
-	url="$(curl --silent -F key="$key" -F file="@$uploadme" "https://sr.ht/api/upload" | grep -o -i "https://sr.ht/*.[a-z0-9._-]*")"
+	url="$(curl --silent -F key="$key" -F file="@$uploadme" "https://wank.party/api/upload" | grep -o -i "https://wank.party/*.[a-z0-9._-]*")"
 }
 
 # This function logs the url,  copies the url to the clipboard, and/or opens the url in your browser
