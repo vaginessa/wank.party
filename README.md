@@ -1,12 +1,12 @@
-# sr.ht
+# wank.party
 
 Private file hosting for you and your friends.
 
-![](https://sr.ht/9087.png)
+![](https://wank.party/coIG.png)
 
-I run a private instance of sr.ht *at* [sr.ht](https://sr.ht). You can request
-an invite if you know me personally. Otherwise, here are the setup instructions
-to run it on your own infrastructure:
+I run a private instance of wank.party *at* [wank.party](https://wank.party). Don't bother
+requesting an invite unless you know me personally, you'll be rejected without hesitation.
+In this case, here are the setup instructions to run it on your own infrastructure:
 
 ## Running the site
 
@@ -32,6 +32,8 @@ You'll need these things (Arch packages in parenthesis, some from AUR):
 * Flask-Login (python-flask-login)
 * psycopg2 (python-psycopg2)
 * bcrypt (python-bcrypt)
+* redis (python-redis)
+* pystache (python-pystache)
 
 Use the packages your OS provides, or build them from source.
 
@@ -42,10 +44,6 @@ string that looks like this when you're done:
 
     postgresql://username:password@hostname:port/database
 
-The connection string I use on localhost is this:
-
-    postgresql://postgres@localhost/sr.ht
-
 We need to be able to create/alter/insert/update/delete in the database you
 give it.
 
@@ -53,8 +51,8 @@ give it.
 
 Find a place you want the code to live.
 
-    $ git clone git://github.com/SirCmpwn/sr.ht.git
-    $ cd sr.ht
+    $ git clone git://github.com/Streetwalrus/wank.party.git
+    $ cd wank.party
 
 **Configure the site**
 
@@ -76,29 +74,19 @@ want to run the site for development, you can source the virtualenv and run
 
     python app.py
 
-To run it in production, you probably want to use gunicorn behind an nginx proxy.
-There's a sample nginx config in the configs/ directory here, but you'll probably
-want to tweak it to suit your needs. Here's how you can run gunicorn, put this in
-your init scripts:
-
-    /path/to/sr.ht/bin/gunicorn app:app -b 127.0.0.1:8000
-
-The `-b` parameter specifies an endpoint to use. You probably want to bind this to
-localhost and proxy through from nginx. I'd also suggest blocking the port you
-choose from external access. It's not that gunicorn is *bad*, it's just that nginx
-is better.
+To run it in production, you probably want to use uWSGI.
 
 When running in a production enviornment, run `python app.py` at least once and
 then read the SQL stuff below before you let it go for good.
 
 nginx configuration is available in `nginx/`, modify it to suit your environment.
-**nginx is required to run sr.ht properly**.
+**nginx is required to run wank.party properly**.
 
 ## Becoming an admin
 
 You can become an admin like so:
 
-    $ cd /path/to/sr.ht/
+    $ cd /path/to/wank.party/
     $ source bin/activate
     $ python
     >>> from srht.database import db
@@ -116,7 +104,7 @@ We use alembic for schema migrations between versions. The first time you run th
 application, the schema will be created. However, you need to tell alembic about
 it. Run the application at least once, then:
 
-    $ cd /path/to/sr.ht/
+    $ cd /path/to/wank.party/
     $ source bin/activate
     $ python
     >>> from alembic.config import Config

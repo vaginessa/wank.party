@@ -24,7 +24,7 @@ def send_invite(user):
                 "domain": _cfg("domain"),
                 "protocol": _cfg("protocol")
             })))
-    message['Subject'] = "Your sr.ht account is approved"
+    message['Subject'] = "Your wank.party account is approved"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())
@@ -39,7 +39,7 @@ def send_rejection(user):
     smtp.login(_cfg("smtp-user"), _cfg("smtp-password"))
     with open("emails/reject") as f:
         message = MIMEText(f.read())
-    message['Subject'] = "Your sr.ht account has been rejected"
+    message['Subject'] = "Your wank.party account has been rejected"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())
@@ -60,7 +60,7 @@ def send_reset(user):
                 "protocol": _cfg("protocol"),
                 'confirmation': user.passwordReset
             })))
-    message['Subject'] = "Reset your sr.ht password"
+    message['Subject'] = "Reset your wank.party password"
     message['From'] = _cfg("smtp-user")
     message['To'] = user.email
     smtp.sendmail(_cfg("smtp-user"), [ user.email ], message.as_string())

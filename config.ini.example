@@ -23,14 +23,14 @@ error-to=
 error-from=
 
 # Where to store uploads (absolute path)
-storage=/home/sircmpwn/sources/sr.ht/storage/
+storage=/home/wankparty/storage/
 
 # Site ownership information for support and such
 owner=Your name
 owner_email=your@email.com
 
 # SQL connection string
-connection-string=postgresql://postgres@localhost/sr.ht
+connection-string=postgresql://postgres@localhost/wank.party
 
 # This is NOT enforced - it's just for the UI
 # You need to set client_max_body_size 50M; or similar in your nginx.conf
@@ -41,5 +41,4 @@ max-upload=50 MB
 donation-page=no
 
 # Set to 'yes' to add a link to /resources on the home page (for members)
-# Usually only relevant for members of sr.ht upstream
 resources-page=no
