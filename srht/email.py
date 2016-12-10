@@ -13,9 +13,8 @@ from srht.config import _cfg, _cfgi
 def send_invite(user):
     if _cfg("smtp-host") == "":
         return
-    smtp = smtplib.SMTP(_cfg("smtp-host"), _cfgi("smtp-port"))
+    smtp = smtplib.SMTP_SSL(_cfg("smtp-host"), _cfgi("smtp-port"))
     smtp.ehlo()
-    smtp.starttls()
     smtp.login(_cfg("smtp-user"), _cfg("smtp-password"))
     with open("emails/invite") as f:
         message = MIMEText(html.parser.HTMLParser().unescape(\
@@ -33,9 +32,8 @@ def send_invite(user):
 def send_rejection(user):
     if _cfg("smtp-host") == "":
         return
-    smtp = smtplib.SMTP(_cfg("smtp-host"), _cfgi("smtp-port"))
+    smtp = smtplib.SMTP_SSL(_cfg("smtp-host"), _cfgi("smtp-port"))
     smtp.ehlo()
-    smtp.starttls()
     smtp.login(_cfg("smtp-user"), _cfg("smtp-password"))
     with open("emails/reject") as f:
         message = MIMEText(f.read())
@@ -48,9 +46,8 @@ def send_rejection(user):
 def send_reset(user):
     if _cfg("smtp-host") == "":
         return
-    smtp = smtplib.SMTP(_cfg("smtp-host"), _cfgi("smtp-port"))
+    smtp = smtplib.SMTP_SSL(_cfg("smtp-host"), _cfgi("smtp-port"))
     smtp.ehlo()
-    smtp.starttls()
     smtp.login(_cfg("smtp-user"), _cfg("smtp-password"))
     with open("emails/reset") as f:
         message = MIMEText(html.parser.HTMLParser().unescape(\
